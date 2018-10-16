@@ -13,7 +13,7 @@ namespace PointOpeOsaaminen.Controllers
 {
     public class OsaamisenController : Controller
     {
-        private OpeOsaamisKantaEntities db = new OpeOsaamisKantaEntities();
+        private OpettajakantaEntities db = new OpettajakantaEntities();
 
         // GET: Osaamisen
         public ActionResult Index()
@@ -40,7 +40,7 @@ namespace PointOpeOsaaminen.Controllers
         // GET: Osaamisen/Create
         public ActionResult Create()
         {
-            //ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Nimi");
+            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Nimi");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace PointOpeOsaaminen.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi", osaamiset.OpettajaID);
+            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Nimi", osaamiset.OpettajaID);
             return View(osaamiset);
         }
 
@@ -133,7 +133,7 @@ namespace PointOpeOsaaminen.Controllers
         public ActionResult OsaamisListaus()
         {
             List<OpettajaOsaaminen> model = new List<OpettajaOsaaminen>();
-            OpeOsaamisKantaEntities entities = new OpeOsaamisKantaEntities();
+            OpettajakantaEntities entities = new OpettajakantaEntities();
             try
             {
                 List<Osaamiset> osaamiset = entities.Osaamiset.ToList();

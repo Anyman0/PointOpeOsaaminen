@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.Kuvaus)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
+            @Html.DisplayNameFor(model => model.Opettaja.Nimi)
         </th>
         <th></th>
     </tr>
@@ -38,7 +38,7 @@
             @Html.DisplayFor(modelItem => item.Kuvaus)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Opettaja.Etunimi)
+            @Html.DisplayFor(modelItem => item.Opettaja.Nimi)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.OsaamisID }) |

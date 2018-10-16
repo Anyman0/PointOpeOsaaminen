@@ -12,7 +12,7 @@ namespace PointOpeOsaaminen.Controllers
 {
     public class OpettajatController : Controller
     {
-        private OpeOsaamisKantaEntities db = new OpeOsaamisKantaEntities();
+        private OpettajakantaEntities db = new OpettajakantaEntities();
 
         // GET: Opettajat
         public ActionResult Index()

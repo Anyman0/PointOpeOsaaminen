@@ -13,10 +13,10 @@ namespace PointOpeOsaaminen.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OpeOsaamisKantaEntities : DbContext
+    public partial class OpettajakantaEntities : DbContext
     {
-        public OpeOsaamisKantaEntities()
-            : base("name=OpeOsaamisKantaEntities")
+        public OpettajakantaEntities()
+            : base("name=OpettajakantaEntities")
         {
         }
     
@@ -27,6 +27,5 @@ namespace PointOpeOsaaminen.Models
     
         public virtual DbSet<Opettaja> Opettaja { get; set; }
         public virtual DbSet<Osaamiset> Osaamiset { get; set; }
-        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
     }
 }
