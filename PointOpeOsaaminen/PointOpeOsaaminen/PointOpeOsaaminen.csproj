@@ -156,26 +156,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\database_firewall_rules.cs">
+      <DependentUpon>OpeKantaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OpeKantaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpeKantaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OpeKantaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpeKantaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OpeKantaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OpeKantaModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Opettaja.cs">
-      <DependentUpon>OpettajaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OpettajaModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OpettajaModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OpettajaModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OpettajaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\OpettajaModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OpettajaModel.edmx</DependentUpon>
+      <DependentUpon>OpeKantaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Osaamiset.cs">
-      <DependentUpon>OpettajaModel.tt</DependentUpon>
+      <DependentUpon>OpeKantaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\OpettajaOsaaminen.cs" />
@@ -187,28 +190,30 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\OpettajaModel.Context.tt">
+    <Content Include="Models\OpeKantaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>OpettajaModel.Context.cs</LastGenOutput>
-      <DependentUpon>OpettajaModel.edmx</DependentUpon>
+      <DependentUpon>OpeKantaModel.edmx</DependentUpon>
+      <LastGenOutput>OpeKantaModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\OpettajaModel.tt">
+    <Content Include="Models\OpeKantaModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OpettajaModel.edmx</DependentUpon>
-      <LastGenOutput>OpettajaModel.cs</LastGenOutput>
+      <DependentUpon>OpeKantaModel.edmx</DependentUpon>
+      <LastGenOutput>OpeKantaModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\OpettajaModel.edmx">
+    <Content Include="ClassDiagram2.cd" />
+    <EntityDeploy Include="Models\OpeKantaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>OpettajaModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>OpeKantaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\OpettajaModel.edmx.diagram">
-      <DependentUpon>OpettajaModel.edmx</DependentUpon>
+    <Content Include="Models\OpeKantaModel.edmx.diagram">
+      <DependentUpon>OpeKantaModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\Opettajienosaamisrekisteri - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -220,7 +225,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
