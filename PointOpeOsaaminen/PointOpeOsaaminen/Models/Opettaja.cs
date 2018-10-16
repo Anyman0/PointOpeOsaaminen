@@ -11,8 +11,7 @@ namespace PointOpeOsaaminen.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Opettaja
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,15 +27,7 @@ namespace PointOpeOsaaminen.Models
         public string Henkilönumero { get; set; }
         public string Yksikkö { get; set; }
         public string Toimenkuva { get; set; }
-        
-        public string Nimi
-        {
-            get
-            {
-                return  Etunimi + " " + Sukunimi;
-            }
-        }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Osaamiset> Osaamiset { get; set; }
     }

@@ -15,35 +15,27 @@
             @Html.DisplayNameFor(model => model.Osaaminen)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Etunimi)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.OpettamisenHalukkuus)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Kuvaus)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Etunimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sukunimi)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Henkilönumero)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OpettamisenHalukkuus)
-        </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Yksikkö)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Toimenkuva)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OpeNimi)
-        </th>
+
+
 
         <th></th>
     </tr>
@@ -54,35 +46,27 @@
             @Html.DisplayFor(modelItem => item.Osaaminen)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Etunimi)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.OpettamisenHalukkuus)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Kuvaus)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Etunimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sukunimi)
-        </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Henkilönumero)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OpettamisenHalukkuus)
-        </td>
+        
         <td>
             @Html.DisplayFor(modelItem => item.Yksikkö)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Toimenkuva)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nimi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OpeNimi)
-        </td>
+
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.OsaamisID }) |
             @Html.ActionLink("Details", "Details", new { id = item.OsaamisID }) |
