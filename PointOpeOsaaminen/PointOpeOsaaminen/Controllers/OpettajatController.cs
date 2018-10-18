@@ -17,9 +17,17 @@ namespace PointOpeOsaaminen.Controllers
         // GET: Opettajat
         public ActionResult Index()
         {
+            var opettaja = db.Opettaja.Include(o => o.Sukunimi);
+
             return View(db.Opettaja.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(string Sukunimi, Opettaja Ope)
+        {
+            var opettaja = db.Opettaja.ToList().Where(o => o.Sukunimi.StartsWith(Sukunimi));
+            return View(opettaja);
+        }
         // GET: Opettajat/Details/5
         public ActionResult Details(int? id)
         {

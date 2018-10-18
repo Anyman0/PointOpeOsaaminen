@@ -16,12 +16,18 @@ namespace PointOpeOsaaminen.Controllers
         private OpeOsaamisKantaEntities db = new OpeOsaamisKantaEntities();
 
         // GET: Osaamisen
+        [HttpGet]
         public ActionResult Index()
         {
             var osaamiset = db.Osaamiset.Include(o => o.Opettaja);
             return View(osaamiset.ToList());
         }
-
+        [HttpPost]
+        public ActionResult Index(string Osaaminen, Osaamiset osa)
+        {
+            var osaaminen = db.Osaamiset.ToList().Where(o => o.Osaaminen.StartsWith(Osaaminen));
+            return View(osaaminen);
+        }
         // GET: Osaamisen/Details/5
         public ActionResult Details(int? id)
         {
@@ -40,7 +46,7 @@ namespace PointOpeOsaaminen.Controllers
         // GET: Osaamisen/Create
         public ActionResult Create()
         {
-            //ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Nimi");
+            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi");
             return View();
         }
 
@@ -74,7 +80,7 @@ namespace PointOpeOsaaminen.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Nimi", osaamiset.OpettajaID);
+            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi", osaamiset.OpettajaID);
             return View(osaamiset);
         }
 
@@ -91,7 +97,7 @@ namespace PointOpeOsaaminen.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Nimi", osaamiset.OpettajaID);
+            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi", osaamiset.OpettajaID);
             return View(osaamiset);
         }
 
