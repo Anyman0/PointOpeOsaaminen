@@ -4,47 +4,55 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Osaamisen Opettajat</h2>
 
 <div>
-    <h4>Osaamiset</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Osaaminen)
-        </dt>
+    <h4 class="modal-dialog">Osaaminen: @Html.DisplayFor(model => model.Osaaminen)</h4>
+    <h4 class="modal-dialog"> Kuvaus: @Html.DisplayFor(model => model.Kuvaus)</h4>
+</div>
+<div style="height: 200px; overflow: auto;">
+    <table class="table">
 
-        <dd>
-            @Html.DisplayFor(model => model.Osaaminen)
-        </dd>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opettaja.Sukunimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opettaja.Henkilönumero)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opettaja.Yksikkö)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opettaja.Toimenkuva)
+            </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Opettaja.Etunimi)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Opettaja.Sukunimi)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Opettaja.Henkilönumero)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Opettaja.Yksikkö)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Opettaja.Toimenkuva)
+            </td>
+            <td>
+                @Html.ActionLink("Yhteystiedot", "")
+            </td>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OpettamisenHalukkuus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OpettamisenHalukkuus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Kuvaus)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kuvaus)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Opettaja.Etunimi)
-        </dd>
-
-    </dl>
+    </table>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.OsaamisID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Takaisin", "Index")
 </p>

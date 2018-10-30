@@ -55,7 +55,7 @@ namespace PointOpeOsaaminen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OsaamisID,Osaaminen,OpettamisenHalukkuus,Kuvaus,OpettajaID")] Osaamiset osaamiset)
+        public ActionResult Create([Bind(Include = "OsaamisID,Osaaminen,Kuvaus")] Osaamiset osaamiset)
         {
             if (ModelState.IsValid)
             {
