@@ -151,6 +151,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KäyttäjätController.cs" />
     <Compile Include="Controllers\OpettajatController.cs" />
     <Compile Include="Controllers\OsaamisenController.cs" />
     <Compile Include="Global.asax.cs">
@@ -158,6 +159,24 @@
     </Compile>
     <Compile Include="Models\database_firewall_rules.cs">
       <DependentUpon>OpeKantaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Käyttäjät.cs">
+      <DependentUpon>LoginModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\OpeKantaModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -184,12 +203,26 @@
     <Compile Include="ViewModel\OpettajaOsaaminen.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Login.mdf" />
+    <Content Include="App_Data\Login_log.ldf">
+      <DependentUpon>Login.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\LoginModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LoginModel.edmx</DependentUpon>
+      <LastGenOutput>LoginModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\LoginModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LoginModel.edmx</DependentUpon>
+      <LastGenOutput>LoginModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\OpeKantaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OpeKantaModel.edmx</DependentUpon>
@@ -212,6 +245,13 @@
     </EntityDeploy>
     <Content Include="Models\OpeKantaModel.edmx.diagram">
       <DependentUpon>OpeKantaModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\LoginModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LoginModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\LoginModel.edmx.diagram">
+      <DependentUpon>LoginModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\Opettajienosaamisrekisteri - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -252,10 +292,9 @@
     <Content Include="Views\Osaamisen\Edit.cshtml" />
     <Content Include="Views\Osaamisen\Index.cshtml" />
     <Content Include="Views\Osaamisen\OsaamisListaus.cshtml" />
+    <Content Include="Views\Käyttäjät\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
