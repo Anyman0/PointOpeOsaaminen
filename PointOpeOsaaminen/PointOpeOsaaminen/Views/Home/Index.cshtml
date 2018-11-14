@@ -1,10 +1,19 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    if (Session["LogedKäyttäjäID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+
+
 }
 
 <div class="jumbotron">    
     <p><a href="/Opettajat/index" class="btn btn-primary btn-lg">Opettajat &raquo;</a></p>
     <p><a href="/Osaamisen/index" class="btn btn-primary btn-lg">Osaamiset &raquo;</a></p>
     <p><a href="/Osaamisen/OsaamisListaus" class="btn btn-primary btn-lg">Osaamis listaus &raquo;</a></p>
+</div>
+<div>
+    <a href="@Url.Action("Logout","Käyttäjät")">Logout</a>
 </div>
 

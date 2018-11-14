@@ -1,0 +1,69 @@
+﻿@model PointOpeOsaaminen.Models.Käyttäjät
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        #Login-div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="Login-div">
+        <hd1 style="text-align:center;"> Opettajien osaamisrekisteri </hd1>
+        @using (Html.BeginForm("Authorise", "Käyttäjät", FormMethod.Post))
+
+        {
+
+            <table>
+                <tr>
+                    <td></td>
+                    <td style="text-decoration:underline">
+                        Kirjaudu sisään
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(a => a.KäyttäjäTunnus)</td>
+
+                    <td> @Html.TextBoxFor(a => a.KäyttäjäTunnus)</td>
+                    <td> @Html.ValidationMessageFor(a => a.KäyttäjäTunnus)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(a => a.Salasana)</td>
+                    <td> @Html.TextBoxFor(a => a.Salasana)</td>
+                    <td>
+                        @Html.ValidationMessageFor(a => a.Salasana)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Kirjaudu" />
+                    </td>
+                    <td></td>
+                </tr>
+
+            </table>
+        }
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    </div>
+</body>
+</html>
+
