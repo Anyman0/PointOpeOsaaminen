@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OpeOsaamisKantaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OpeOsaamisKantaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Opettaja">
           <Key>
             <PropertyRef Name="OpettajaID" />
@@ -23,7 +23,6 @@
           </Key>
           <Property Name="OsaamisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Osaaminen" Type="nvarchar" MaxLength="50" />
-          <Property Name="OpettamisenHalukkuus" Type="bit" Nullable="false" />
           <Property Name="Kuvaus" Type="nvarchar" MaxLength="200" />
           <Property Name="OpettajaID" Type="int" />
         </EntityType>
@@ -75,8 +74,7 @@ warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does 
             <End Role="Osaamiset" EntitySet="Osaamiset" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OpeOsaamisKantaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -99,7 +97,6 @@ warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does 
           </Key>
           <Property Name="OsaamisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Osaaminen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="OpettamisenHalukkuus" Type="Boolean" Nullable="false" />
           <Property Name="Kuvaus" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="OpettajaID" Type="Int32" />
           <NavigationProperty Name="Opettaja" Relationship="Self.FK__Osaamiset__Opett__5441852A" FromRole="Osaamiset" ToRole="Opettaja" />
@@ -165,7 +162,6 @@ warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does 
               <MappingFragment StoreEntitySet="Osaamiset">
                 <ScalarProperty Name="OsaamisID" ColumnName="OsaamisID" />
                 <ScalarProperty Name="Osaaminen" ColumnName="Osaaminen" />
-                <ScalarProperty Name="OpettamisenHalukkuus" ColumnName="OpettamisenHalukkuus" />
                 <ScalarProperty Name="Kuvaus" ColumnName="Kuvaus" />
                 <ScalarProperty Name="OpettajaID" ColumnName="OpettajaID" />
               </MappingFragment>
@@ -197,7 +193,7 @@ warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does 
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

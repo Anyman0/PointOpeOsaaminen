@@ -4,17 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Osaamiset</h2>
+<h2 style="text-align:center;"><b>Osaamiset</b></h2>
 
 <form id="formsearch" method="post">
     <div class=" row" id=" SearchBox">
-        <div class=" col-md-1">Osaaminen</div>
+        <div class=" col-md-1"><b>Osaaminen</b></div>
         <div class=" col-md-2"><input type="text" id="Osaaminen" name="Osaaminen" /></div>
         <div class=" col-md-2"><input type="submit" id=" submitsearch" value="Etsi" /></div>
     </div>
 </form>
 <div style="height: 200px; overflow: auto;">
-    <table class="table">
+    <table class="table table-bordered" style="background-color:azure">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Osaaminen)

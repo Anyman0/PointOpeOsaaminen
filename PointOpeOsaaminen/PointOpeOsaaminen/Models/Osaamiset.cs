@@ -16,7 +16,6 @@ namespace PointOpeOsaaminen.Models
     {
         public int OsaamisID { get; set; }
         public string Osaaminen { get; set; }
-        public bool OpettamisenHalukkuus { get; set; }
         public string Kuvaus { get; set; }
         public Nullable<int> OpettajaID { get; set; }
     

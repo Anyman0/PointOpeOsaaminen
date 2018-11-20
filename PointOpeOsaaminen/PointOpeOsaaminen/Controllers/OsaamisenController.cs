@@ -89,7 +89,7 @@ namespace PointOpeOsaaminen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OsaamisID,Osaaminen,OpettamisenHalukkuus,Kuvaus,OpettajaID")] Osaamiset osaamiset)
+        public ActionResult Edit([Bind(Include = "OsaamisID,Osaaminen,Kuvaus,OpettajaID")] Osaamiset osaamiset)
         {
             if (ModelState.IsValid)
             {
@@ -147,8 +147,7 @@ namespace PointOpeOsaaminen.Controllers
                 {
                     OpettajaOsaaminen view = new OpettajaOsaaminen();
                     view.OsaamisID = osaaminen.OsaamisID;
-                    view.Osaaminen = osaaminen.Osaaminen;
-                    view.OpettamisenHalukkuus = osaaminen.OpettamisenHalukkuus;
+                    view.Osaaminen = osaaminen.Osaaminen;                   
                     view.Kuvaus = osaaminen.Kuvaus;
                     view.OpettajaID = osaaminen.Opettaja.OpettajaID;
                     view.Etunimi = osaaminen.Opettaja.Etunimi;

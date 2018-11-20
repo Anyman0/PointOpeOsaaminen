@@ -30,7 +30,7 @@ namespace PointOpeOsaaminen.ViewModel
         public string Nimi { get; set; }
         public int OsaamisID { get; set; }
         public string Osaaminen { get; set; }
-        public bool OpettamisenHalukkuus { get; set; }
+        
         public string Kuvaus { get; set; }
         
 
