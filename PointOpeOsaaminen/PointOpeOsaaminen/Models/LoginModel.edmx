@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LoginModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LoginModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Käyttäjät">
           <Key>
             <PropertyRef Name="KäyttäjäID" />
@@ -16,22 +16,21 @@
         <EntityContainer Name="LoginModelStoreContainer">
           <EntitySet Name="Käyttäjät" EntityType="Self.Käyttäjät" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LoginModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="LoginEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Käyttäjät" EntityType="LoginModel.Käyttäjät" />
+        </EntityContainer>
         <EntityType Name="Käyttäjät">
           <Key>
             <PropertyRef Name="KäyttäjäID" />
           </Key>
           <Property Name="KäyttäjäID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KäyttäjäTunnus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Salasana" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="KäyttäjäTunnus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Salasana" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="LoginEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Käyttäjät" EntityType="Self.Käyttäjät" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -41,9 +40,9 @@
           <EntitySetMapping Name="Käyttäjät">
             <EntityTypeMapping TypeName="LoginModel.Käyttäjät">
               <MappingFragment StoreEntitySet="Käyttäjät">
-                <ScalarProperty Name="KäyttäjäID" ColumnName="KäyttäjäID" />
-                <ScalarProperty Name="KäyttäjäTunnus" ColumnName="KäyttäjäTunnus" />
                 <ScalarProperty Name="Salasana" ColumnName="Salasana" />
+                <ScalarProperty Name="KäyttäjäTunnus" ColumnName="KäyttäjäTunnus" />
+                <ScalarProperty Name="KäyttäjäID" ColumnName="KäyttäjäID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
