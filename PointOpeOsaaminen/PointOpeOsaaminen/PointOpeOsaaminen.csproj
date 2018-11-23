@@ -208,7 +208,12 @@
     <Content Include="App_Data\Login_log.ldf">
       <DependentUpon>Login.mdf</DependentUpon>
     </Content>
-    <Content Include="BackGround\schoolBG.png" />
+    <Content Include="Images\LoginSnip.PNG" />
+    <Content Include="Images\OngelmalomakeKuva.png" />
+    <Content Include="Images\OpettajaKuva.png" />
+    <Content Include="Images\OsaamisetKuva.png" />
+    <Content Include="Images\PääsivuKuva.png" />
+    <Content Include="Images\YhteystiedotKuva.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
