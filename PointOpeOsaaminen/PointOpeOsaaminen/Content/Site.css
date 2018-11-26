@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.bg-image {
+    background-image: url('../BackGround//pointcollege.jpg');
+}
