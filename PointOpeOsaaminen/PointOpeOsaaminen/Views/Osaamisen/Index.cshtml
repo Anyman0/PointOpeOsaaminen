@@ -3,45 +3,45 @@
 @{
     ViewBag.Title = "Index";
 }
+<body style="background:url(/Images/OsaamisetKuva.png)">
+    <h2 style="text-align:center;"><b>Osaamiset</b></h2>
 
-<h2 style="text-align:center;"><b>Osaamiset</b></h2>
-
-<form id="formsearch" method="post">
-    <div class=" row" id=" SearchBox">
-        <div class=" col-md-1"><b>Osaaminen</b></div>
-        <div class=" col-md-2"><input type="text" id="Osaaminen" name="Osaaminen" /></div>
-        <div class=" col-md-2"><input type="submit" id=" submitsearch" value="Etsi" /></div>
-    </div>
-</form>
-<p>&nbsp;</p>
-<div style="height: 200px; overflow: auto;">
-    <table class="table table-bordered" style="background-color:azure">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Osaaminen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Kuvaus)
-            </th>
-            <th>@Html.ActionLink("Lisää uusi", "Create")</th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    <form id="formsearch" method="post">
+        <div class=" row" id=" SearchBox">
+            <div class=" col-md-1"><b>Osaaminen</b></div>
+            <div class=" col-md-2"><input type="text" id="Osaaminen" name="Osaaminen" /></div>
+            <div class=" col-md-2"><input type="submit" id=" submitsearch" value="Etsi" /></div>
+        </div>
+    </form>
+    <div style="height: 200px; overflow: auto;">
+        <table class="table table-bordered" style="background-color:azure">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Osaaminen)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Kuvaus)
-                </td>
-                <td>
-                    @Html.ActionLink("Muokkaa", "Edit", new { id = item.OsaamisID }) |
-                    @Html.ActionLink("Osaamisen opettajat", "Details", new { id = item.OsaamisID }) |
-                    @Html.ActionLink("Poista", "Delete", new { id = item.OsaamisID })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Osaaminen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Kuvaus)
+                </th>
+                <th>@Html.ActionLink("Lisää uusi", "Create")</th>
             </tr>
-        }
 
-    </table>
-</div>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Osaaminen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Kuvaus)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Muokkaa", "Edit", new { id = item.OsaamisID }) |
+                        @Html.ActionLink("Osaamisen opettajat", "Details", new { id = item.OsaamisID }) |
+                        @Html.ActionLink("Poista", "Delete", new { id = item.OsaamisID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    </body>

@@ -7,8 +7,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body background="BackGround/schoolBG.png">
-    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#002d72">
+<body background="Images/PääsivuKuva.png">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:black">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,8 +28,8 @@
                     <li><a href="@Url.Action("Logout", "Käyttäjät")">Kirjaudu ulos</a></li>
                 </ul>
             </div>
-            <div class="navbar navbar-inverse navbar-fixed-bottom" style="background-color:#002d72">
-                <div class="navbar-collapse collapse">
+            <div class="navbar navbar-inverse navbar-fixed-bottom" style="background-color:black">
+                <div class="navbar-collapse collapse">                    
                     <ul class="nav navbar-nav navbar-right">
                         <li>@Html.ActionLink("Ilmoita ongelmasta", "Index", "Error/ErrorView")</li>
                     </ul>

@@ -19,28 +19,21 @@
         #Login-div {
             position: absolute;
             left: 40%;
-            top: 40%;
+            top: 30%;
             border: 1px solid #ccc;
             padding: 10px 10px;
-            background-color:azure
+            background-color:lightsteelblue           
         }
     </style>
 </head>
-<body background="BackGround/schoolBG.png">
+<body background="Images/LoginSnip.png">
     <div id="Login-div">
-        <hd1 style="text-align:center;"> Opettajien osaamisrekisteri </hd1>
+        <hd1 style="text-align:center; font-family:Arial; padding-left:30px"><b>Opettajien Osaamisrekisteri</b></hd1>
         @using (Html.BeginForm("Authorise", "Käyttäjät", FormMethod.Post))
 
         {
 
-            <table>
-                <tr>
-                    <td></td>
-                    <td style="text-decoration:underline">
-                        Kirjaudu sisään
-
-                    </td>
-                </tr>
+            <table>              
                 <tr>
                     <td>@Html.LabelFor(a => a.KäyttäjäTunnus)</td>
 
@@ -57,7 +50,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <input type="submit" value="Kirjaudu" />
+                        <input type="submit" value="Kirjaudu sisään" />
                     </td>
                     <td></td>
                 </tr>
