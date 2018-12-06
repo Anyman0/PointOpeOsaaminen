@@ -154,8 +154,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\database_firewall_rules.cs">
+      <DependentUpon>OpeKantaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Käyttäjät.cs">
-      <DependentUpon>LoginModel.tt</DependentUpon>
+      <DependentUpon>OpeKantaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -191,6 +194,9 @@
       <DependentUpon>OpeKantaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Osaamiset.cs">
+      <DependentUpon>OpeKantaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Yhteistiedot.cs">
       <DependentUpon>OpeKantaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

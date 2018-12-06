@@ -19,18 +19,22 @@ namespace PointOpeOsaaminen.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (LoginEntities db = new LoginEntities())
+                using (OpeOsaamisKantaEntities db = new OpeOsaamisKantaEntities())
                 {
 
                     var v = db.Käyttäjät.Where(a => a.KäyttäjäTunnus.Equals(u.KäyttäjäTunnus) && a.Salasana.Equals(u.Salasana)).FirstOrDefault();
                     if (v != null)
                     {
                         Session["LogedKäyttäjäID"] = v.KäyttäjäID.ToString();
-                        Session["LogedUserSalasana"] = v.Salasana.ToString();
+                        Session["LogedKäyttäjäSalasana"] = v.Salasana.ToString();
                         return RedirectToAction("Index", "Home");
                     }
+                    else
+                    {
+                        u.Loginerror = "Väärä Käyttäjä tai salasana";
+                        return View("Index", u);
 
-
+                    }
                 }
             }
             {

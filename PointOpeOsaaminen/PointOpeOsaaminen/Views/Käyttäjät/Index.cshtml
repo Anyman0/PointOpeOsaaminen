@@ -24,6 +24,9 @@
             padding: 10px 10px;
             background-color:lightsteelblue           
         }
+     .field-Validation-error{
+            color:red;
+        }
     </style>
 </head>
 <body background="Images/LoginSnip.png">
@@ -33,31 +36,36 @@
 
         {
 
-            <table>              
-                <tr>
-                    <td>@Html.LabelFor(a => a.KäyttäjäTunnus)</td>
+        <table>
+            <tr>
+                <td>@Html.LabelFor(a => a.KäyttäjäTunnus)</td>
 
-                    <td> @Html.TextBoxFor(a => a.KäyttäjäTunnus)</td>
-                    <td> @Html.ValidationMessageFor(a => a.KäyttäjäTunnus)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(a => a.Salasana)</td>
-                    <td> @Html.TextBoxFor(a => a.Salasana)</td>
-                    <td>
-                        @Html.ValidationMessageFor(a => a.Salasana)
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="submit" value="Kirjaudu sisään" />
-                    </td>
-                    <td></td>
-                </tr>
+                <td> @Html.TextBoxFor(a => a.KäyttäjäTunnus)</td>
+                <td> @Html.ValidationMessageFor(a => a.KäyttäjäTunnus)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(a => a.Salasana)</td>
+                <td> @Html.TextBoxFor(a => a.Salasana)</td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.Salasana)
+                </td>
+            </tr>
+            <tr>
+                <td colspan=" 2">
+                    <label class=" field-Validation-error">@Html.DisplayFor(a => a.Loginerror)</label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Kirjaudu sisään" />
+                </td>
+                <td></td>
+            </tr>
 
-            </table>
+        </table>
         }
-        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script src="~/Scripts/jquery-3.3.1.min.js"></script>
         <script src="~/Scripts/jquery.validate.min.js"></script>
         <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 

@@ -2,6 +2,10 @@
 
 @{
     ViewBag.Title = "Create";
+    if (Session["LogedKäyttäjäID"].ToString() != "1")
+    {
+        Response.Redirect("~/Käyttäjät/Index");
+    }
 }
 
 <h2>Lisää uusi</h2>
@@ -9,7 +13,7 @@
 
 @using (Html.BeginForm()) 
 {
-    @Html.AntiForgeryToken()
+    @*@Html.AntiForgeryToken()*@
     
     <div class="form-horizontal">
         <h4>Osaamiset</h4>
