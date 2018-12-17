@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PointOpeOsaaminen.Models.Yhteistiedot>
+
+@{
+    ViewBag.Title = "IndexKäyttäjät";
+}
+
+<h2 style="text-align:center"><b>Yhteystiedot</b></h2>
+<body style="background:url(/Images/YhteystiedotKuva.png)">
+    
+    <table class="table table-hover, table-striped" style="background-color:azure">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sukunimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Etunimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sähköposti)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PuhelinNumero)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sukunimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etunimi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sähköposti)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PuhelinNumero)
+                </td>
+                
+            </tr>
+        }
+    </table>
+</body>

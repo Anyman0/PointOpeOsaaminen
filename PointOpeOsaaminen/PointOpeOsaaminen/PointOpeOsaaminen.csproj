@@ -151,6 +151,7 @@
     <Compile Include="Controllers\KäyttäjätController.cs" />
     <Compile Include="Controllers\OpettajatController.cs" />
     <Compile Include="Controllers\OsaamisenController.cs" />
+    <Compile Include="Controllers\YhteistiedotController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -311,6 +312,12 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\Opettajat\IndexKäyttäjät.cshtml" />
     <Content Include="Views\Osaamisen\IndexKäyttäjät.cshtml" />
+    <Content Include="Views\Yhteistiedot\Create.cshtml" />
+    <Content Include="Views\Yhteistiedot\Delete.cshtml" />
+    <Content Include="Views\Yhteistiedot\Details.cshtml" />
+    <Content Include="Views\Yhteistiedot\Edit.cshtml" />
+    <Content Include="Views\Yhteistiedot\Index.cshtml" />
+    <Content Include="Views\Yhteistiedot\IndexKäyttäjät.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

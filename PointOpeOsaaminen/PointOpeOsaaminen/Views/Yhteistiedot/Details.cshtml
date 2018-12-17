@@ -1,0 +1,50 @@
+﻿@model PointOpeOsaaminen.Models.Yhteistiedot
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <h2>Yhteistiedot</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sukunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sukunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sähköposti)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sähköposti)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PuhelinNumero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PuhelinNumero)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.OpettajaID }) |
+    @Html.ActionLink("Takaisin", "Index")
+</p>
