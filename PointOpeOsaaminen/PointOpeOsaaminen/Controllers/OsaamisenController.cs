@@ -22,6 +22,11 @@ namespace PointOpeOsaaminen.Controllers
             var osaamiset = db.Osaamiset.Include(o => o.Opettaja);
             return View(osaamiset.ToList());
         }
+        public ActionResult IndexKäyttäjät()
+        {
+            var osaamiset = db.Osaamiset.Include(o => o.Opettaja);
+            return View(osaamiset.ToList());
+        }
         [HttpPost]
         public ActionResult Index(string Osaaminen, Osaamiset osa)
         {

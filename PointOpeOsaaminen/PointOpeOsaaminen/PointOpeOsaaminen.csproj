@@ -309,6 +309,8 @@
     <Content Include="Views\Error\ErrorView.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Opettajat\IndexKäyttäjät.cshtml" />
+    <Content Include="Views\Osaamisen\IndexKäyttäjät.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

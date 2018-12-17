@@ -1,11 +1,7 @@
 ﻿@model IEnumerable<PointOpeOsaaminen.Models.Opettaja>
 
 @{
-    ViewBag.Title = "Index";
-    if (Session["LogedKäyttäjäID"].ToString() != "1")
-    {
-        Response.Redirect("~/Opettajat/IndexKäyttäjät");
-    }
+    ViewBag.Title = "IndexKäyttäjät";
 }
 
 <body style="background:url(/Images/OpettajaKuva.png)">
@@ -39,7 +35,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Toimenkuva)
             </th>
-            <th>@Html.ActionLink("Lisää uusi", "Create")</th>
+            
         </tr>
 
         @foreach (var item in Model)
@@ -64,12 +60,12 @@
                     @Html.DisplayFor(modelItem => item.Toimenkuva)
                 </td>
                 <td>
-                    @Html.ActionLink("Muokkaa", "Edit", new { id = item.OpettajaID }) |
+                    
                     @Html.ActionLink("Opettajan tiedot", "Details", new { id = item.OpettajaID }) |
-                    @Html.ActionLink("Poista", "Delete", new { id = item.OpettajaID })
+                    
                 </td>
             </tr>
         }
 
     </table>
-    </body>
+</body>
