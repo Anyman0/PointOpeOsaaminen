@@ -11,11 +11,20 @@ namespace PointOpeOsaaminen.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Käyttäjät
     {
         public int KäyttäjäID { get; set; }
+        [Required(ErrorMessage = "Käyttäjätunnus on pakollinen", AllowEmptyStrings = false)]
+        [DisplayName("KäyttäjäTunnus")]
         public string KäyttäjäTunnus { get; set; }
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Salasana on pakollinen ", AllowEmptyStrings = false)]
         public string Salasana { get; set; }
+        public string Loginerror { get; set; }
+        public string InRole { get; set; }
+
     }
 }

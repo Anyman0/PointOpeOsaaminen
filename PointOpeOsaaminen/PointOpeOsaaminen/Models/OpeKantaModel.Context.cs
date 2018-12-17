@@ -25,9 +25,10 @@ namespace PointOpeOsaaminen.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Käyttäjät> Käyttäjät { get; set; }
         public virtual DbSet<Opettaja> Opettaja { get; set; }
         public virtual DbSet<Osaamiset> Osaamiset { get; set; }
+        public virtual DbSet<database_firewall_rules> database_firewall_rules { get; set; }
+        public virtual DbSet<Käyttäjät> Käyttäjät { get; set; }
         public virtual DbSet<Yhteistiedot> Yhteistiedot { get; set; }
     }
 }

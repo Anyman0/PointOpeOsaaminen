@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f8da9b7be7bb411885bfcfd878b1738d" Name="Diagram1">
+        <EntityTypeShape EntityType="OpeOsaamisKantaModel.Opettaja" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="OpeOsaamisKantaModel.Osaamiset" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="OpeOsaamisKantaModel.FK__Osaamiset__Opett__5441852A" />
+        <EntityTypeShape EntityType="OpeOsaamisKantaModel.Käyttäjät" Width="1.5" PointX="1.625" PointY="4.625" />
+        <EntityTypeShape EntityType="OpeOsaamisKantaModel.Yhteistiedot" Width="1.5" PointX="3.625" PointY="4.625" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

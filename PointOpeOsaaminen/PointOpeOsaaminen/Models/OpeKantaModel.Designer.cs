@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Point College\Scrum\PointOpe\PointOpeOsaaminen\PointOpeOsaaminen\Models\OpeosaaminenModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\A55D\source\repos\Anyman0\PointOpeOsaaminen\PointOpeOsaaminen\PointOpeOsaaminen\Models\OpeKantaModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
