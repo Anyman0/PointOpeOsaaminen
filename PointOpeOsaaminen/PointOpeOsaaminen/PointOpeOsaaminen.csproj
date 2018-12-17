@@ -151,14 +151,12 @@
     <Compile Include="Controllers\KäyttäjätController.cs" />
     <Compile Include="Controllers\OpettajatController.cs" />
     <Compile Include="Controllers\OsaamisenController.cs" />
+    <Compile Include="Controllers\YhteistiedotController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\database_firewall_rules.cs">
-      <DependentUpon>OpeKantaModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Käyttäjät.cs">
-      <DependentUpon>OpeKantaModel.tt</DependentUpon>
+      <DependentUpon>OpeosaaminenModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -175,32 +173,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\OpeKantaModel.Context.cs">
+    <Compile Include="Models\OpeosaaminenModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OpeKantaModel.Context.tt</DependentUpon>
+      <DependentUpon>OpeosaaminenModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OpeKantaModel.cs">
+    <Compile Include="Models\OpeosaaminenModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OpeKantaModel.tt</DependentUpon>
+      <DependentUpon>OpeosaaminenModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\OpeKantaModel.Designer.cs">
+    <Compile Include="Models\OpeosaaminenModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OpeKantaModel.edmx</DependentUpon>
+      <DependentUpon>OpeosaaminenModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Opettaja.cs">
-      <DependentUpon>OpeKantaModel.tt</DependentUpon>
+      <DependentUpon>OpeosaaminenModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Osaamiset.cs">
-      <DependentUpon>OpeKantaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Yhteistiedot.cs">
-      <DependentUpon>OpeKantaModel.tt</DependentUpon>
+      <DependentUpon>OpeosaaminenModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\OpettajaOsaaminen.cs" />
+    <Compile Include="Models\Yhteistiedot.cs">
+      <DependentUpon>OpeosaaminenModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Login.mdf" />
@@ -231,15 +229,15 @@
       <DependentUpon>LoginModel.edmx</DependentUpon>
       <LastGenOutput>LoginModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\OpeKantaModel.Context.tt">
+    <Content Include="Models\OpeosaaminenModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OpeKantaModel.edmx</DependentUpon>
-      <LastGenOutput>OpeKantaModel.Context.cs</LastGenOutput>
+      <DependentUpon>OpeosaaminenModel.edmx</DependentUpon>
+      <LastGenOutput>OpeosaaminenModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\OpeKantaModel.tt">
+    <Content Include="Models\OpeosaaminenModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OpeKantaModel.edmx</DependentUpon>
-      <LastGenOutput>OpeKantaModel.cs</LastGenOutput>
+      <DependentUpon>OpeosaaminenModel.edmx</DependentUpon>
+      <LastGenOutput>OpeosaaminenModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -247,19 +245,19 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ClassDiagram2.cd" />
-    <EntityDeploy Include="Models\OpeKantaModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>OpeKantaModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\OpeKantaModel.edmx.diagram">
-      <DependentUpon>OpeKantaModel.edmx</DependentUpon>
-    </Content>
     <EntityDeploy Include="Models\LoginModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LoginModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Models\LoginModel.edmx.diagram">
       <DependentUpon>LoginModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\OpeosaaminenModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OpeosaaminenModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\OpeosaaminenModel.edmx.diagram">
+      <DependentUpon>OpeosaaminenModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\Opettajienosaamisrekisteri - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -309,6 +307,11 @@
     <Content Include="Views\Error\ErrorView.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Yhteistiedot\Create.cshtml" />
+    <Content Include="Views\Yhteistiedot\Delete.cshtml" />
+    <Content Include="Views\Yhteistiedot\Details.cshtml" />
+    <Content Include="Views\Yhteistiedot\Edit.cshtml" />
+    <Content Include="Views\Yhteistiedot\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
