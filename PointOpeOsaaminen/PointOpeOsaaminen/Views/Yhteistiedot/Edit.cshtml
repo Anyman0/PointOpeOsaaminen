@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+<body style="background:url(/Images/YhteystiedotKuva.png)">
     <div class="form-horizontal">
         <h4>Yhteistiedot</h4>
         <hr />
@@ -55,12 +55,13 @@
             </div>
         </div>
     </div>
-}
+    </body>
+ }
 
-<div>
-    @Html.ActionLink("Takaisin", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Takaisin", "Index")
+    </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -25,14 +25,22 @@
           <Property Name="Yksikkö" Type="nvarchar" MaxLength="10" />
           <Property Name="Toimenkuva" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Osaamiset">
+        <EntityType Name="OpettajaOsaaminen">
+          <Key>
+            <PropertyRef Name="OpettajaOsaamisID" />
+          </Key>
+          <Property Name="OpettajaOsaamisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OpettajaID" Type="int" Nullable="false" />
+          <Property Name="OsaamisID" Type="int" Nullable="false" />
+          <Property Name="OsaamisenKuvaus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Osaaminen">
           <Key>
             <PropertyRef Name="OsaamisID" />
           </Key>
           <Property Name="OsaamisID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Osaaminen" Type="nvarchar" MaxLength="50" />
+          <Property Name="OpenOsaaminen" Type="nvarchar" MaxLength="50" />
           <Property Name="Kuvaus" Type="nvarchar" MaxLength="200" />
-          <Property Name="OpettajaID" Type="int" />
         </EntityType>
         <EntityType Name="Yhteistiedot">
           <Key>
@@ -42,7 +50,7 @@
           <Property Name="Sukunimi" Type="nvarchar" MaxLength="50" />
           <Property Name="Etunimi" Type="nvarchar" MaxLength="50" />
           <Property Name="Sähköposti" Type="nvarchar" MaxLength="100" />
-          <Property Name="PuhelinNumero" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PuhelinNumero" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -62,22 +70,35 @@ warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does 
           <Property Name="create_date" Type="datetime" Nullable="false" />
           <Property Name="modify_date" Type="datetime" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Osaamiset__Opett__5441852A">
-          <End Role="Opettaja" Type="Self.Opettaja" Multiplicity="0..1" />
-          <End Role="Osaamiset" Type="Self.Osaamiset" Multiplicity="*" />
+        <Association Name="FK_OpettajaOsaaminen_Opettaja">
+          <End Role="Opettaja" Type="Self.Opettaja" Multiplicity="1" />
+          <End Role="OpettajaOsaaminen" Type="Self.OpettajaOsaaminen" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Opettaja">
               <PropertyRef Name="OpettajaID" />
             </Principal>
-            <Dependent Role="Osaamiset">
+            <Dependent Role="OpettajaOsaaminen">
               <PropertyRef Name="OpettajaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpettajaOsaaminen_Osaaminen">
+          <End Role="Osaaminen" Type="Self.Osaaminen" Multiplicity="1" />
+          <End Role="OpettajaOsaaminen" Type="Self.OpettajaOsaaminen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osaaminen">
+              <PropertyRef Name="OsaamisID" />
+            </Principal>
+            <Dependent Role="OpettajaOsaaminen">
+              <PropertyRef Name="OsaamisID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="OpeOsaamisKantaModelStoreContainer">
           <EntitySet Name="Käyttäjät" EntityType="Self.Käyttäjät" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Opettaja" EntityType="Self.Opettaja" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Osaamiset" EntityType="Self.Osaamiset" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OpettajaOsaaminen" EntityType="Self.OpettajaOsaaminen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Osaaminen" EntityType="Self.Osaaminen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Yhteistiedot" EntityType="Self.Yhteistiedot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" store:Type="Views" store:Schema="sys">
             <DefiningQuery>SELECT 
@@ -89,9 +110,13 @@ warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does 
     [database_firewall_rules].[modify_date] AS [modify_date]
     FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Osaamiset__Opett__5441852A" Association="Self.FK__Osaamiset__Opett__5441852A">
+          <AssociationSet Name="FK_OpettajaOsaaminen_Opettaja" Association="Self.FK_OpettajaOsaaminen_Opettaja">
             <End Role="Opettaja" EntitySet="Opettaja" />
-            <End Role="Osaamiset" EntitySet="Osaamiset" />
+            <End Role="OpettajaOsaaminen" EntitySet="OpettajaOsaaminen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpettajaOsaaminen_Osaaminen" Association="Self.FK_OpettajaOsaaminen_Osaaminen">
+            <End Role="Osaaminen" EntitySet="Osaaminen" />
+            <End Role="OpettajaOsaaminen" EntitySet="OpettajaOsaaminen" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -109,17 +134,7 @@ warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does 
           <Property Name="Henkilönumero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Yksikkö" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Toimenkuva" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Osaamiset" Relationship="Self.FK__Osaamiset__Opett__5441852A" FromRole="Opettaja" ToRole="Osaamiset" />
-        </EntityType>
-        <EntityType Name="Osaamiset">
-          <Key>
-            <PropertyRef Name="OsaamisID" />
-          </Key>
-          <Property Name="OsaamisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Osaaminen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Kuvaus" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="OpettajaID" Type="Int32" />
-          <NavigationProperty Name="Opettaja" Relationship="Self.FK__Osaamiset__Opett__5441852A" FromRole="Osaamiset" ToRole="Opettaja" />
+          <NavigationProperty Name="OpettajaOsaaminen" Relationship="OpeOsaamisKantaModel.FK_OpettajaOsaaminen_Opettaja" FromRole="Opettaja" ToRole="OpettajaOsaaminen" />
         </EntityType>
         <EntityType Name="database_firewall_rules">
           <Key>
@@ -137,28 +152,21 @@ warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does 
           <Property Name="create_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="modify_date" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <Association Name="FK__Osaamiset__Opett__5441852A">
-          <End Role="Opettaja" Type="Self.Opettaja" Multiplicity="0..1" />
-          <End Role="Osaamiset" Type="Self.Osaamiset" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Opettaja">
-              <PropertyRef Name="OpettajaID" />
-            </Principal>
-            <Dependent Role="Osaamiset">
-              <PropertyRef Name="OpettajaID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="OpeOsaamisKantaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Opettaja" EntityType="Self.Opettaja" />
-          <EntitySet Name="Osaamiset" EntityType="Self.Osaamiset" />
           <EntitySet Name="database_firewall_rules" EntityType="Self.database_firewall_rules" />
-          <AssociationSet Name="FK__Osaamiset__Opett__5441852A" Association="Self.FK__Osaamiset__Opett__5441852A">
-            <End Role="Opettaja" EntitySet="Opettaja" />
-            <End Role="Osaamiset" EntitySet="Osaamiset" />
-          </AssociationSet>
           <EntitySet Name="Käyttäjät" EntityType="OpeOsaamisKantaModel.Käyttäjät" />
           <EntitySet Name="Yhteistiedot" EntityType="OpeOsaamisKantaModel.Yhteistiedot" />
+          <EntitySet Name="OpettajaOsaaminen" EntityType="OpeOsaamisKantaModel.OpettajaOsaaminen" />
+          <EntitySet Name="Osaaminen" EntityType="OpeOsaamisKantaModel.Osaaminen" />
+          <AssociationSet Name="FK_OpettajaOsaaminen_Opettaja" Association="OpeOsaamisKantaModel.FK_OpettajaOsaaminen_Opettaja">
+            <End Role="Opettaja" EntitySet="Opettaja" />
+            <End Role="OpettajaOsaaminen" EntitySet="OpettajaOsaaminen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OpettajaOsaaminen_Osaaminen" Association="OpeOsaamisKantaModel.FK_OpettajaOsaaminen_Osaaminen">
+            <End Role="Osaaminen" EntitySet="Osaaminen" />
+            <End Role="OpettajaOsaaminen" EntitySet="OpettajaOsaaminen" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Käyttäjät">
           <Key>
@@ -176,8 +184,52 @@ warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does 
           <Property Name="Sukunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Etunimi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Sähköposti" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PuhelinNumero" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PuhelinNumero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="OpettajaOsaaminen">
+          <Key>
+            <PropertyRef Name="OpettajaOsaamisID" />
+          </Key>
+          <Property Name="OpettajaOsaamisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OpettajaID" Type="Int32" Nullable="false" />
+          <Property Name="OsaamisID" Type="Int32" Nullable="false" />
+          <Property Name="OsaamisenKuvaus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Opettaja" Relationship="OpeOsaamisKantaModel.FK_OpettajaOsaaminen_Opettaja" FromRole="OpettajaOsaaminen" ToRole="Opettaja" />
+          <NavigationProperty Name="Osaaminen" Relationship="OpeOsaamisKantaModel.FK_OpettajaOsaaminen_Osaaminen" FromRole="OpettajaOsaaminen" ToRole="Osaaminen" />
+        </EntityType>
+        <EntityType Name="Osaaminen">
+          <Key>
+            <PropertyRef Name="OsaamisID" />
+          </Key>
+          <Property Name="OsaamisID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OpenOsaaminen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kuvaus" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OpettajaOsaaminen" Relationship="OpeOsaamisKantaModel.FK_OpettajaOsaaminen_Osaaminen" FromRole="Osaaminen" ToRole="OpettajaOsaaminen" />
+        </EntityType>
+        <Association Name="FK_OpettajaOsaaminen_Opettaja">
+          <End Type="OpeOsaamisKantaModel.Opettaja" Role="Opettaja" Multiplicity="1" />
+          <End Type="OpeOsaamisKantaModel.OpettajaOsaaminen" Role="OpettajaOsaaminen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Opettaja">
+              <PropertyRef Name="OpettajaID" />
+            </Principal>
+            <Dependent Role="OpettajaOsaaminen">
+              <PropertyRef Name="OpettajaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OpettajaOsaaminen_Osaaminen">
+          <End Type="OpeOsaamisKantaModel.Osaaminen" Role="Osaaminen" Multiplicity="1" />
+          <End Type="OpeOsaamisKantaModel.OpettajaOsaaminen" Role="OpettajaOsaaminen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Osaaminen">
+              <PropertyRef Name="OsaamisID" />
+            </Principal>
+            <Dependent Role="OpettajaOsaaminen">
+              <PropertyRef Name="OsaamisID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -194,16 +246,6 @@ warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does 
                 <ScalarProperty Name="Henkilönumero" ColumnName="Henkilönumero" />
                 <ScalarProperty Name="Yksikkö" ColumnName="Yksikkö" />
                 <ScalarProperty Name="Toimenkuva" ColumnName="Toimenkuva" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Osaamiset">
-            <EntityTypeMapping TypeName="OpeOsaamisKantaModel.Osaamiset">
-              <MappingFragment StoreEntitySet="Osaamiset">
-                <ScalarProperty Name="OsaamisID" ColumnName="OsaamisID" />
-                <ScalarProperty Name="Osaaminen" ColumnName="Osaaminen" />
-                <ScalarProperty Name="Kuvaus" ColumnName="Kuvaus" />
-                <ScalarProperty Name="OpettajaID" ColumnName="OpettajaID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -236,6 +278,25 @@ warning 6002: The table/view 'OpeOsaamisKanta.sys.database_firewall_rules' does 
                 <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
                 <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
                 <ScalarProperty Name="OpettajaID" ColumnName="OpettajaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OpettajaOsaaminen">
+            <EntityTypeMapping TypeName="OpeOsaamisKantaModel.OpettajaOsaaminen">
+              <MappingFragment StoreEntitySet="OpettajaOsaaminen">
+                <ScalarProperty Name="OsaamisenKuvaus" ColumnName="OsaamisenKuvaus" />
+                <ScalarProperty Name="OsaamisID" ColumnName="OsaamisID" />
+                <ScalarProperty Name="OpettajaID" ColumnName="OpettajaID" />
+                <ScalarProperty Name="OpettajaOsaamisID" ColumnName="OpettajaOsaamisID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Osaaminen">
+            <EntityTypeMapping TypeName="OpeOsaamisKantaModel.Osaaminen">
+              <MappingFragment StoreEntitySet="Osaaminen">
+                <ScalarProperty Name="Kuvaus" ColumnName="Kuvaus" />
+                <ScalarProperty Name="OpenOsaaminen" ColumnName="OpenOsaaminen" />
+                <ScalarProperty Name="OsaamisID" ColumnName="OsaamisID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

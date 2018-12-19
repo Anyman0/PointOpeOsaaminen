@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PointOpeOsaaminen.Models.Osaamiset>
+﻿@model IEnumerable<PointOpeOsaaminen.Models.Osaaminen>
 
 @{
     ViewBag.Title = "Index";
@@ -13,15 +13,16 @@
     <form id="formsearch" method="post">
         <div class=" row" id=" SearchBox">
             <div class=" col-md-1"><b>Osaaminen</b></div>
-            <div class=" col-md-2"><input type="text" id="Osaaminen" name="Osaaminen" /></div>
+            <div class=" col-md-2"><input type="text" id="OpenOsaaminen" name="OpenOsaaminen" /></div>
             <div class=" col-md-2"><input type="submit" id=" submitsearch" value="Etsi" /></div>
         </div>
     </form>
+
     <div style="height: 200px; overflow: auto;">
         <table class="table table-bordered" style="background-color:azure">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Osaaminen)
+                    @Html.DisplayNameFor(model => model.OpenOsaaminen)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Kuvaus)
@@ -33,14 +34,14 @@
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Osaaminen)
+                        @Html.DisplayFor(modelItem => item.OpenOsaaminen)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Kuvaus)
                     </td>
                     <td>
                         @Html.ActionLink("Muokkaa", "Edit", new { id = item.OsaamisID }) |
-                        @Html.ActionLink("Osaamisen opettajat", "Details", new { id = item.OsaamisID }) |
+                        @Html.ActionLink("Osaamisen opettajat", "Index", "OpettajaOsaamiset") |
                         @Html.ActionLink("Poista", "Delete", new { id = item.OsaamisID })
                     </td>
                 </tr>
@@ -48,4 +49,4 @@
 
         </table>
     </div>
-    </body>
+</body>

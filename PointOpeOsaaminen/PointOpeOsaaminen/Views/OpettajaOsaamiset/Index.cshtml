@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PointOpeOsaaminen.Models.OpettajaOsaaminen>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center; color:aliceblue"><b>Opettajat ja Osaamiset</b></h2>
+
+<form id="formsearch" method="post">
+    <div class=" row" id=" SearchBox">
+        <div class=" col-md-1" style="color:aliceblue"><b>Etunimi</b></div>
+        <div class=" col-md-2"><input type="text" id="Etunimi" name="Etunimi" /></div>
+        <div class=" col-md-2"><input type="submit" id=" submitsearch" value="Etsi" /></div>
+    </div>
+</form>
+<table class="table" style="background-color:azure">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Osaaminen.OpenOsaaminen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Osaaminen.Kuvaus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OsaamisenKuvaus)
+        </th>
+        <th>@Html.ActionLink("Lisää uusi osaaminen", "Create")</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Opettaja.Etunimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Osaaminen.OpenOsaaminen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Osaaminen.Kuvaus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OsaamisenKuvaus)
+        </td>
+        <td>
+            @Html.ActionLink("Muokkaa", "Edit", new { id = item.OpettajaOsaamisID }) |           
+            @Html.ActionLink("Poista", "Delete", new { id = item.OpettajaOsaamisID })
+        </td>
+    </tr>
+    }
+
+</table>
+

@@ -1,0 +1,43 @@
+﻿@model PointOpeOsaaminen.Models.OpettajaOsaaminen
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OpettajaOsaaminen</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OsaamisenKuvaus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OsaamisenKuvaus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opettaja.Etunimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Osaaminen.OpenOsaaminen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Osaaminen.OpenOsaaminen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OpettajaOsaamisID }) |
+    @Html.ActionLink("Takaisin", "Index")
+</p>
+

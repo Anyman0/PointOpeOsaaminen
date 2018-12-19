@@ -5,46 +5,47 @@
 }
 
 
+<body style="background:url(/Images/YhteystiedotKuva.png)">
+    <div>
+        <h2>Yhteystiedot</h2>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Sukunimi)
+            </dt>
 
-<div>
-    <h2>Yhteistiedot</h2>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Sukunimi)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Sukunimi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sukunimi)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Etunimi)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Etunimi)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Etunimi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Etunimi)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Sähköposti)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sähköposti)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Sähköposti)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sähköposti)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PuhelinNumero)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PuhelinNumero)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PuhelinNumero)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PuhelinNumero)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Muokkaa", "Edit", new { id = Model.OpettajaID }) |
-    @Html.ActionLink("Takaisin", "Index")
-</p>
+        </dl>
+    </div>
+</body>
+    <p>
+        @Html.ActionLink("Muokkaa", "Edit", new { id = Model.OpettajaID }) |
+        @Html.ActionLink("Takaisin", "Index")
+    </p>

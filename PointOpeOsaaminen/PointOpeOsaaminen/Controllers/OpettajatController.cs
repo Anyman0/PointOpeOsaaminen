@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PointOpeOsaaminen.Models;
+using PointOpeOsaaminen.ViewModel;
 
 namespace PointOpeOsaaminen.Controllers
 {
@@ -51,7 +52,14 @@ namespace PointOpeOsaaminen.Controllers
         // GET: Opettajat/Create
         public ActionResult Create()
         {
-            return View();
+            //return View();
+            var opettaja = new Opettaja();
+            var kaikkiOsaamiset = from t in db.Osaaminen
+                                  select t;
+            OpettajaOsaaminenViewModel viewModel = new OpettajaOsaaminenViewModel(opettaja,
+                db.Osaaminen.ToList());
+
+            return View(viewModel);
         }
 
         // POST: Opettajat/Create
@@ -59,16 +67,57 @@ namespace PointOpeOsaaminen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OpettajaID,Etunimi,Sukunimi,Sähköposti,Henkilönumero,Yksikkö,Toimenkuva")] Opettaja opettaja)
+        public ActionResult Create(OpettajaOsaaminenViewModel opettajaOsaaminenViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                db.Opettaja.Add(opettaja);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+           
 
-            return View(opettaja);
+           
+            Opettaja opettaja1 = new Opettaja();
+           
+
+            OpettajaOsaaminen opettajaOsaaminen1 = new OpettajaOsaaminen();
+           
+            opettaja1.Etunimi = opettajaOsaaminenViewModel.Etunimi;
+            opettaja1.Sukunimi = opettajaOsaaminenViewModel.Sukunimi;
+            opettaja1.Sähköposti = opettajaOsaaminenViewModel.Sähköposti;
+            opettaja1.Henkilönumero = opettajaOsaaminenViewModel.Henkilönumero;
+            opettaja1.Yksikkö = opettajaOsaaminenViewModel.Yksikkö;
+            opettaja1.Toimenkuva = opettajaOsaaminenViewModel.Toimenkuva;
+
+            db.Opettaja.Add(opettaja1);
+            db.SaveChanges();
+
+          
+
+            if (opettajaOsaaminenViewModel.ValitutOsaamiset != null)
+            {
+                foreach (var osaamisID in opettajaOsaaminenViewModel.ValitutOsaamiset)
+                {
+                    OpettajaOsaaminen opettajaOsaaminen = new OpettajaOsaaminen();
+                    opettajaOsaaminen.OsaamisID = osaamisID;
+                    
+
+                    int taasOpeID = (
+                       from p in db.Opettaja
+                       orderby p.OpettajaID descending
+                       select p.OpettajaID
+                   ).Take(1).SingleOrDefault();
+
+                    opettajaOsaaminen.OpettajaID = taasOpeID;
+
+                   
+
+                    db.OpettajaOsaaminen.Add(opettajaOsaaminen);
+                    db.SaveChanges();
+
+                    
+                }
+            }
+           
+
+
+
+            return RedirectToAction("Index");
         }
 
         // GET: Opettajat/Edit/5

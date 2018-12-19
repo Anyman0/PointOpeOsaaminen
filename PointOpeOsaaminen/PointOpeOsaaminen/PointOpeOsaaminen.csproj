@@ -149,6 +149,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KäyttäjätController.cs" />
+    <Compile Include="Controllers\OpettajaOsaamisetController.cs" />
     <Compile Include="Controllers\OpettajatController.cs" />
     <Compile Include="Controllers\OsaamisenController.cs" />
     <Compile Include="Controllers\YhteistiedotController.cs" />
@@ -194,14 +195,17 @@
     <Compile Include="Models\Opettaja.cs">
       <DependentUpon>OpeKantaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Osaamiset.cs">
+    <Compile Include="Models\OpettajaOsaaminen.cs">
+      <DependentUpon>OpeKantaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Osaaminen.cs">
       <DependentUpon>OpeKantaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Yhteistiedot.cs">
       <DependentUpon>OpeKantaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\OpettajaOsaaminen.cs" />
+    <Compile Include="ViewModel\OpettajaOsaaminenViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Login.mdf" />
@@ -318,6 +322,11 @@
     <Content Include="Views\Yhteistiedot\Edit.cshtml" />
     <Content Include="Views\Yhteistiedot\Index.cshtml" />
     <Content Include="Views\Yhteistiedot\IndexKäyttäjät.cshtml" />
+    <Content Include="Views\OpettajaOsaamiset\Index.cshtml" />
+    <Content Include="Views\OpettajaOsaamiset\Details.cshtml" />
+    <Content Include="Views\OpettajaOsaamiset\Edit.cshtml" />
+    <Content Include="Views\OpettajaOsaamiset\Create.cshtml" />
+    <Content Include="Views\OpettajaOsaamiset\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

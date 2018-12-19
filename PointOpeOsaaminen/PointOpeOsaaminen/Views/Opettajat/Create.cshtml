@@ -1,4 +1,4 @@
-﻿@model PointOpeOsaaminen.Models.Opettaja
+﻿@model PointOpeOsaaminen.ViewModel.OpettajaOsaaminenViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -10,8 +10,8 @@
 
 @using (Html.BeginForm()) 
 {
-    @*@Html.AntiForgeryToken()*@
-    
+    @Html.AntiForgeryToken()
+<body style="background:url(/Images/OpettajaKuva.png)">
     <div class="form-horizontal">
         <h4>Opettaja</h4>
         <hr />
@@ -65,12 +65,25 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.OsaamisID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownListFor(m => m.OsaamisID, (IEnumerable<SelectListItem>)ViewBag.Liisisirata,
+                new { @class = "multiselect", @multiple = "OsaamisID", @style = "width: 450px;height:40px" })*@
+                @Html.ListBoxFor(m => m.ValitutOsaamiset,
+                new MultiSelectList(Model.TamanOpenOsaamiset, "OsaamisID", "OpenOsaaminen")
+                , null)
+                @Html.ValidationMessageFor(model => model.OsaamisID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Lisää uusi" class="btn btn-default" />
             </div>
         </div>
     </div>
-}
+    </body>
+ }
 
 <div>
     @Html.ActionLink("Takaisin", "Index")

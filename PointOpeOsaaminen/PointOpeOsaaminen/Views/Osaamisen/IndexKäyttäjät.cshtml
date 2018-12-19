@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PointOpeOsaaminen.Models.Osaamiset>
+﻿@model IEnumerable<PointOpeOsaaminen.Models.Osaaminen>
 
 @{
     ViewBag.Title = "IndexKäyttäjät";
@@ -10,7 +10,7 @@
     <form id="formsearch" method="post">
         <div class=" row" id=" SearchBox">
             <div class=" col-md-1"><b>Osaaminen</b></div>
-            <div class=" col-md-2"><input type="text" id="Osaaminen" name="Osaaminen" /></div>
+            <div class=" col-md-2"><input type="text" id="OpenOsaaminen" name="OpenOsaaminen" /></div>
             <div class=" col-md-2"><input type="submit" id=" submitsearch" value="Etsi" /></div>
         </div>
     </form>
@@ -18,19 +18,19 @@
         <table class="table table-bordered" style="background-color:azure">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Osaaminen)
+                    @Html.DisplayNameFor(model => model.OpenOsaaminen)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Kuvaus)
                 </th>
                 
             </tr>
-
+            
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Osaaminen)
+                        @Html.DisplayFor(modelItem => item.OpenOsaaminen)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Kuvaus)

@@ -65,7 +65,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Muokkaa", "Edit", new { id = item.OpettajaID }) |
-                    @Html.ActionLink("Opettajan tiedot", "Details", new { id = item.OpettajaID }) |
+                    @Html.ActionLink("Opettajan osaamiset", "Index", "OpettajaOsaamiset") |
                     @Html.ActionLink("Poista", "Delete", new { id = item.OpettajaID })
                 </td>
             </tr>

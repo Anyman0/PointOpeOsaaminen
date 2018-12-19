@@ -12,13 +12,19 @@ namespace PointOpeOsaaminen.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Osaamiset
+    public partial class Osaaminen
     {
-        public int OsaamisID { get; set; }
-        public string Osaaminen { get; set; }
-        public string Kuvaus { get; set; }
-        public Nullable<int> OpettajaID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Osaaminen()
+        {
+            this.OpettajaOsaaminen = new HashSet<OpettajaOsaaminen>();
+        }
     
-        public virtual Opettaja Opettaja { get; set; }
+        public int OsaamisID { get; set; }
+        public string OpenOsaaminen { get; set; }
+        public string Kuvaus { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OpettajaOsaaminen> OpettajaOsaaminen { get; set; }
     }
 }

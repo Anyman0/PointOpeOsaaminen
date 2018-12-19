@@ -15,23 +15,22 @@ namespace PointOpeOsaaminen.Controllers
     {
         private OpeOsaamisKantaEntities db = new OpeOsaamisKantaEntities();
 
-        // GET: Osaamisen
-        [HttpGet]
+        // GET: Osaamisen       
         public ActionResult Index()
         {
-            var osaamiset = db.Osaamiset.Include(o => o.Opettaja);
-            return View(osaamiset.ToList());
+            var osaamiset = db.Osaaminen.Include(o => o.OpenOsaaminen);          
+            return View(db.Osaaminen.ToList());
         }
         public ActionResult IndexKäyttäjät()
         {
-            var osaamiset = db.Osaamiset.Include(o => o.Opettaja);
-            return View(osaamiset.ToList());
+            var osaamiset = db.Osaaminen.Include(o => o.OpenOsaaminen);
+            return View(db.Osaaminen.ToList());
         }
-        [HttpPost]
-        public ActionResult Index(string Osaaminen, Osaamiset osa)
+        [HttpPost]       
+        public ActionResult Index(string Skill, Osaaminen Osaam)
         {
-            var osaaminen = db.Osaamiset.ToList().Where(o => o.Osaaminen.StartsWith(Osaaminen));
-            return View(osaaminen);
+            var osaamiset = db.Osaaminen.ToList().Where(o => o.OpenOsaaminen.StartsWith(Skill));
+            return View(osaamiset);
         }
         // GET: Osaamisen/Details/5
         public ActionResult Details(int? id)
@@ -40,7 +39,7 @@ namespace PointOpeOsaaminen.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Osaamiset osaamiset = db.Osaamiset.Find(id);
+            Osaaminen osaamiset = db.Osaaminen.Find(id);
             if (osaamiset == null)
             {
                 return HttpNotFound();
@@ -51,7 +50,7 @@ namespace PointOpeOsaaminen.Controllers
         // GET: Osaamisen/Create
         public ActionResult Create()
         {
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi");
+            //ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi");
             return View();
         }
 
@@ -60,33 +59,32 @@ namespace PointOpeOsaaminen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "OsaamisID,Osaaminen,Kuvaus")] Osaamiset osaamiset)
+        
+
+        public ActionResult Create([Bind(Include = "OsaamisID,OpenOsaaminen,Kuvaus")] Osaaminen osaaminen)
         {
             if (ModelState.IsValid)
             {
-                db.Osaamiset.Add(osaamiset);
+                db.Osaaminen.Add(osaaminen);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi", osaamiset.OpettajaID);
-            return View(osaamiset);
+            return View(osaaminen);
         }
-
-        // GET: Osaamisen/Edit/5
+        
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Osaamiset osaamiset = db.Osaamiset.Find(id);
-            if (osaamiset == null)
+            Osaaminen osaaminen = db.Osaaminen.Find(id);
+            if (osaaminen == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi", osaamiset.OpettajaID);
-            return View(osaamiset);
+            return View(osaaminen);
         }
 
         // POST: Osaamisen/Edit/5
@@ -94,40 +92,43 @@ namespace PointOpeOsaaminen.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "OsaamisID,Osaaminen,Kuvaus,OpettajaID")] Osaamiset osaamiset)
+        
+
+        public ActionResult Edit([Bind(Include = "OsaamisID,OpenOsaaminen,Kuvaus")] Osaaminen osaaminen)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(osaamiset).State = EntityState.Modified;
+                db.Entry(osaaminen).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OpettajaID = new SelectList(db.Opettaja, "OpettajaID", "Etunimi", osaamiset.OpettajaID);
-            return View(osaamiset);
+            return View(osaaminen);
         }
 
-        // GET: Osaamisen/Delete/5
+       
+
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Osaamiset osaamiset = db.Osaamiset.Find(id);
-            if (osaamiset == null)
+            Osaaminen osaaminen = db.Osaaminen.Find(id);
+            if (osaaminen == null)
             {
                 return HttpNotFound();
             }
-            return View(osaamiset);
+            return View(osaaminen);
         }
 
         // POST: Osaamisen/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        
         public ActionResult DeleteConfirmed(int id)
         {
-            Osaamiset osaamiset = db.Osaamiset.Find(id);
-            db.Osaamiset.Remove(osaamiset);
+            Osaaminen osaaminen = db.Osaaminen.Find(id);
+            db.Osaaminen.Remove(osaaminen);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -141,35 +142,6 @@ namespace PointOpeOsaaminen.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult OsaamisListaus()
-        {
-            List<OpettajaOsaaminen> model = new List<OpettajaOsaaminen>();
-            OpeOsaamisKantaEntities entities = new OpeOsaamisKantaEntities();
-            try
-            {
-                List<Osaamiset> osaamiset = entities.Osaamiset.ToList();
-                foreach (Osaamiset osaaminen in osaamiset)
-                {
-                    OpettajaOsaaminen view = new OpettajaOsaaminen();
-                    view.OsaamisID = osaaminen.OsaamisID;
-                    view.Osaaminen = osaaminen.Osaaminen;                   
-                    view.Kuvaus = osaaminen.Kuvaus;
-                    view.OpettajaID = osaaminen.Opettaja.OpettajaID;
-                    view.Etunimi = osaaminen.Opettaja.Etunimi;
-                    view.Sukunimi = osaaminen.Opettaja.Sukunimi;
-                    view.Sähköposti = osaaminen.Opettaja.Sähköposti;
-                    view.Henkilönumero = osaaminen.Opettaja.Henkilönumero;
-                    view.Yksikkö = osaaminen.Opettaja.Yksikkö;
-                    view.Toimenkuva = osaaminen.Opettaja.Toimenkuva;
-                    view.Nimi = osaaminen.Opettaja.Etunimi + " " + osaaminen.Opettaja.Sukunimi;
-                    model.Add(view);
-                }
-            }
-            finally
-            {
-                entities.Dispose();
-            }
-            return View(model);
-        }
+       
     }
 }

@@ -1,0 +1,60 @@
+﻿@model PointOpeOsaaminen.Models.OpettajaOsaaminen
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Lisää uusi</h2>
+
+<body style="background:url(/Images/OsaamisetKuva.png)">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>OpettajaOsaaminen</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+         
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OpettajaID, "OpettajaID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("OpettajaID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.OpettajaID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OsaamisID, "OsaamisID", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("OsaamisID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.OsaamisID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OsaamisenKuvaus, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.OsaamisenKuvaus, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.OsaamisenKuvaus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Lisää" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</body>
+    <div>
+        @Html.ActionLink("Takaisin", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+

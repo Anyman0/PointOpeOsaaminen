@@ -1,0 +1,51 @@
+﻿@model PointOpeOsaaminen.Models.OpettajaOsaaminen
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<body style="background:url(/Images/OsaamisetKuva.png)">
+    <h2>Poista</h2>
+
+    <h3>Tahdotko varmasti poistaa tämän osaamisen opettajalta?</h3>
+    <div>
+        <h4>OpettajaOsaaminen</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.OsaamisenKuvaus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OsaamisenKuvaus)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Opettaja.Etunimi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Osaaminen.OpenOsaaminen)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Osaaminen.OpenOsaaminen)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Poista" class="btn btn-default" /> |
+                @Html.ActionLink("Takaisin", "Index")
+            </div>
+        }
+    </div>
+</body>

@@ -2,72 +2,75 @@
 
 @{
     ViewBag.Title = "Delete";
-    
+
 }
 
-<h2>Poista</h2>
+<body style="background:url(/Images/OpettajaKuva.png)">
+    <h2>Poista</h2>
 
-<h3>>Haluatko varmasti poistaa opettajan?</h3>
-<div>
-    <h4>Opettaja</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Etunimi)
-        </dt>
+    <h3>Haluatko varmasti poistaa opettajan?</h3>
+    <div>
+        <h4>Opettaja</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Etunimi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Etunimi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Etunimi)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sukunimi)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Sukunimi)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sukunimi)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Sukunimi)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Sähköposti)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Sähköposti)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Sähköposti)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Sähköposti)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Henkilönumero)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Henkilönumero)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Henkilönumero)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Henkilönumero)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Yksikkö)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Yksikkö)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Yksikkö)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Yksikkö)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Toimenkuva)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Toimenkuva)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Toimenkuva)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Toimenkuva)
+            </dd>
 
-    </dl>
+        </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Poista" class="btn btn-default" /> |
-            @Html.ActionLink("Takaisin", "Index")
-        </div>
-    }
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Poista" class="btn btn-default" /> |
+                @Html.ActionLink("Takaisin", "Index")
+            </div>
+        }
+    </div>
+</body>
