@@ -1,48 +1,83 @@
-﻿@model IEnumerable<PointOpeOsaaminen.Models.OpettajaOsaaminen>
+﻿@model PointOpeOsaaminen.ViewModel.OpettajaOsaaminenViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Details";
 }
+<body style="background:url(/Images/OpettajaKuva.png)">
+    <h2>Details</h2>
 
-<h2>Opettajan osaamiset</h2>
+    <div>
+        <h4>Opettaja</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.LabelFor(model => model.Etunimi)
+            </dt>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
+            <dd>
+                @Html.DisplayFor(model => model.OpettajaModelliin.Etunimi)
+            </dd>
 
-<table class="table" style="background-color:azure">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Osaaminen.OpenOsaaminen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Osaaminen.Kuvaus)
-        </th>
-        <th></th>
-    </tr>
+            <dt>
+                @Html.LabelFor(model => model.Sukunimi)
+            </dt>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Opettaja.Etunimi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Osaaminen.OpenOsaaminen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Osaaminen.Kuvaus)
-            </td>
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.OpettajaOsaamisID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.OpettajaOsaamisID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.OpettajaOsaamisID })
-                </td>*@
-        </tr>
-    }
+            <dd>
+                @Html.DisplayFor(model => model.OpettajaModelliin.Sukunimi)
+            </dd>
 
-</table>
+            <dt>
+                @Html.LabelFor(model => model.Sähköposti)
+            </dt>
 
+            <dd>
+                @Html.DisplayFor(model => model.OpettajaModelliin.Sähköposti)
+            </dd>
+
+            <dt>
+                @Html.LabelFor(model => model.Henkilönumero)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OpettajaModelliin.Henkilönumero)
+            </dd>
+
+            <dt>
+                @Html.LabelFor(model => model.Yksikkö)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OpettajaModelliin.Yksikkö)
+            </dd>
+
+            <dt>
+                @Html.LabelFor(model => model.Toimenkuva)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OpettajaModelliin.Toimenkuva)
+            </dd>
+            <dt>
+                @Html.LabelFor(model => model.OpenOsaaminen)
+            </dt>
+            @if (Model.TamanOpenOsaamiset.Count() != 0)
+            {
+            @*<dd>
+
+                @Html.ListBoxFor(m => m.ValitutOpettajat,
+                             new MultiSelectList(Model.TamanOpenOsaamiset, "OsaamisID", "OpenOsaaminen"))
+            </dd>*@
+                <dd>
+                    @Html.DropDownListFor(n => n.OsaamisID,
+                        new SelectList(Model.TamanOpenOsaamiset, "OsaamisID", "OpenOsaaminen"))
+
+
+                </dd>
+                }
+            </dl>
+    </div>
+</body>
+    <p>
+        @Html.ActionLink("Muokkaa", "Edit", new { id = Model.OpettajaModelliin.OpettajaID }) |
+        @Html.ActionLink("Takaisin", "Index")
+    </p>

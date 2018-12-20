@@ -1,59 +1,188 @@
-﻿@model PointOpeOsaaminen.Models.Osaaminen
+﻿@model PointOpeOsaaminen.ViewModel.OpettajaOsaaminenViewModel
 
 @{
     ViewBag.Title = "Details";
 }
 
-    <h2 style="text-align:center"><b>Osaamisen Opettajat</b></h2>
 
+<h2>Osaaminen</h2>
+
+
+<body style="background:url(/Images/OsaamisetKuva.png)">
     <div>
-        <h4><i>Osaaminen: @Html.DisplayFor(model => model.Osaaminen)</i></h4>
-        <h4><i>Kuvaus: @Html.DisplayFor(model => model.Kuvaus)</i></h4>
+        
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.Label("Taito")
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OsaaminenModelliin.OpenOsaaminen)
+            </dd>
+
+            <dt>
+                @Html.LabelFor(model => model.Kuvaus)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OsaaminenModelliin.Kuvaus)
+            </dd>
+
+            <dt>
+                @Html.LabelFor(model => model.Nimi)
+            </dt>
+
+            @if (Model.TamanOsaamisenOpettajat.Count() != 0)
+            {
+
+                <dd>
+                    @Html.DropDownListFor(n => n.OsaamisID,
+                        new SelectList(Model.TamanOsaamisenOpettajat, "OpettajaID", "Kokonimi"))
+                </dd>
+
+
+                @*<dd>
+                @{
+                    var KokoNimi = from m in Model.TamanOsaamisenOpettajat.ToList()
+                                   select new { ID = m.OpettajaID, OpettajanNimi = m.Etunimi + " " + m.Sukunimi };
+                }
+
+                @Html.ListBoxFor(m => m.ValitutOpettajat,
+                                     new MultiSelectList(KokoNimi, "ID", "OpettajanNimi"))
+            </dd>*@
+
+            }
+
+        </dl>
     </div>
-    <div style="height: 200px; overflow: auto; background-color:azure">
-        <table class="table">
+    <p>
+        @Html.ActionLink("Muokkaa", "Edit", new { id = Model.OsaaminenModelliin.OsaamisID }) |
+        @Html.ActionLink("Takaisin", "Index")
+    </p>
+</body>
 
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Opettaja.Sukunimi)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Opettaja.Henkilönumero)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Opettaja.Yksikkö)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Opettaja.Toimenkuva)
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => model.Opettaja.Etunimi)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Opettaja.Sukunimi)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Opettaja.Henkilönumero)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Opettaja.Yksikkö)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => model.Opettaja.Toimenkuva)
-                </td>
-                <td>
-                    @Html.ActionLink("Yhteystiedot", "")
-                </td>
-            </tr>
 
-        </table>
-        <p>
+
+
+
+
+
+
+
+
+    @*@model PointOpeOsaaminen.Models.Osaaminen
+
+        @{
+            ViewBag.Title = "Details";
+        }
+
+            <h2 style="text-align:center"><b>Osaamisen Opettajat</b></h2>
+
+            <div>
+                <h4><i>Osaaminen: @Html.DisplayFor(model => model.Osaaminen)</i></h4>
+                <h4><i>Kuvaus: @Html.DisplayFor(model => model.Kuvaus)</i></h4>
+            </div>
+            <div style="height: 200px; overflow: auto; background-color:azure">
+                <table class="table">
+
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Opettaja.Etunimi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Opettaja.Sukunimi)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Opettaja.Henkilönumero)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Opettaja.Yksikkö)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Opettaja.Toimenkuva)
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.Opettaja.Etunimi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Opettaja.Sukunimi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Opettaja.Henkilönumero)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Opettaja.Yksikkö)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Opettaja.Toimenkuva)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Yhteystiedot", "")
+                        </td>
+                    </tr>
+
+                </table>
+                <p>
+                    @Html.ActionLink("Takaisin", "Index")
+                </p>
+            </div>*@
+
+
+
+
+
+
+
+
+
+
+
+@*<body style="background:url(/Images/OsaamisetKuva.png)">
+    <div>
+        <div class="form-horizontal">
+            <h4 style="padding-left:160px"><b>Osaaminen</b></h4>
+            <hr />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OpenOsaaminen, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.OsaaminenModelliin.OpenOsaaminen, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.OpenOsaaminen, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Kuvaus, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.OsaaminenModelliin.Kuvaus, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Kuvaus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nimi)
+                <div class="col-md-10">
+                    @{
+                        var KokoNimi = from m in Model.TamanOsaamisenOpettajat.ToList()
+                                       select new { ID = m.OpettajaID, OpettajanNimi = m.Etunimi + " " + m.Sukunimi };
+                    }
+                    @Html.ListBoxFor(m=>m.ValitutOpettajat,
+                            new MultiSelectList(KokoNimi, "ID", "OpettajanNimi"),
+                            new { @class = "comboBox" })
+
+                </div>
+
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.OsaamisID }) |
             @Html.ActionLink("Takaisin", "Index")
-        </p>
+        </div>
     </div>
-    
+</body>*@

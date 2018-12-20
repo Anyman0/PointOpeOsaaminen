@@ -39,12 +39,32 @@ namespace PointOpeOsaaminen.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Osaaminen osaamiset = db.Osaaminen.Find(id);
-            if (osaamiset == null)
+
+            Osaaminen osaaminen = db.Osaaminen.Find(id);
+            OpettajaOsaaminenViewModel yhdistys = new OpettajaOsaaminenViewModel();
+            List<Opettaja> joskus = new List<Opettaja>();
+
+            var hh = db.OpettajaOsaaminen.Where(o => o.OsaamisID == osaaminen.OsaamisID);
+            var oo = hh.ToList();
+            foreach (OpettajaOsaaminen opeOsaa in oo)
+            {
+                yhdistys.OpettajaID = opeOsaa.OpettajaID;
+                yhdistys.OsaamisID = opeOsaa.OsaamisID;
+                //opettajaOsaaminen.OpettajaOsaamisID = opeOsaa.OpettajaOsaamisID;
+                //opettajaOsaaminen.OsaamisenKuvaus = opeOsaa.OsaamisenKuvaus;
+
+                var ee = db.Opettaja.Find(yhdistys.OpettajaID);
+                joskus.Add(ee);
+            }
+
+            OpettajaOsaaminenViewModel viewModel = new OpettajaOsaaminenViewModel(osaaminen,
+            joskus);
+
+            if (osaaminen == null)
             {
                 return HttpNotFound();
             }
-            return View(osaamiset);
+            return View(viewModel);
         }
 
         // GET: Osaamisen/Create

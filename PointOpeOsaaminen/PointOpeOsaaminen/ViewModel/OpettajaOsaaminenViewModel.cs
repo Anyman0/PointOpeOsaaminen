@@ -122,6 +122,17 @@ namespace PointOpeOsaaminen.ViewModel
 
 
 
+        public Osaaminen OsaaminenModelliin { get; set; }
+        public List<int> ValitutOpettajat { get; set; }
+        public virtual List<Opettaja> TamanOsaamisenOpettajat { get; set; }
+
+        public OpettajaOsaaminenViewModel(Osaaminen _osaaminen, List<Opettaja> _TamanOsaamisenOpettajat)
+        {
+            OsaaminenModelliin = _osaaminen;
+            TamanOsaamisenOpettajat = _TamanOsaamisenOpettajat;
+            ValitutOpettajat = new List<int>();
+        }
+
 
 
 

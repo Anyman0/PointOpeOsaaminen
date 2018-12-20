@@ -17,6 +17,7 @@ namespace PointOpeOsaaminen.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Opettaja()
         {
+            TamanOpenOsaamiset = new List<Opettaja>();
             this.OpettajaOsaaminen = new HashSet<OpettajaOsaaminen>();
         }
     
@@ -27,7 +28,18 @@ namespace PointOpeOsaaminen.Models
         public string Henkilönumero { get; set; }
         public string Yksikkö { get; set; }
         public string Toimenkuva { get; set; }
-    
+
+
+        public string Kokonimi
+        {
+            get
+            {
+                return Etunimi + " " + Sukunimi;
+            }
+        }
+
+
+        public virtual ICollection<Opettaja> TamanOpenOsaamiset { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OpettajaOsaaminen> OpettajaOsaaminen { get; set; }
     }

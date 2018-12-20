@@ -39,7 +39,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Toimenkuva)
             </th>
-            <th>@Html.ActionLink("Lisää uusi", "Create")</th>
+            <th>
+                @Html.ActionLink("Lisää uusi", "Create")   |
+
+                        @Html.ActionLink("Opettajat ja Osaamiset", "Index", "OpettajaOsaamiset")
+                    </th>
         </tr>
 
         @foreach (var item in Model)
@@ -65,7 +69,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Muokkaa", "Edit", new { id = item.OpettajaID }) |
-                    @Html.ActionLink("Opettajan osaamiset", "Index", "OpettajaOsaamiset") |
+                    @Html.ActionLink("Opettajan osaamiset", "Details", new { id = item.OpettajaID }) |
                     @Html.ActionLink("Poista", "Delete", new { id = item.OpettajaID })
                 </td>
             </tr>
